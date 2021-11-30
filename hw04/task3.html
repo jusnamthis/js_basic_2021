@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Post.prototype.edit = function (text) {
+            this.text = text;
+        }
+
+        myBoard = new Post('Kenny', 'Tell whatever you want', '29.11.2021');
+        myBoard.edit('Hello my name is Kenny and I got a story to tell');
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlited = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+
+        AttachedPost.prototype.makeTextHighlithed = function () {
+            this.highlited = true;
+        }
+
+        myNewAttachment = new AttachedPost('Georgio', 'My name is Giovanni Georgio', '29.11.2021');
+        myNewAttachment.edit('everbody calls my Georgio');
+        myNewAttachment.makeTextHighlithed();
+
+        // ES6
+
+        class Post1 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            
+            edit = function (text) {
+            this.text = text;
+            }
+        }
+
+        class AttachedPost1 extends Post1 {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlited = false;
+            }
+
+            makeTextHighlithed = function () {
+            this.highlited = true;
+            }
+        }
+
+        let myNewPost1 = new Post1('Kooper', 'Ten crook commands me', '29.11.2021');
+        myNewPost1.edit('I\'m from Brooklyn!');
+
+        let myNewAttachment1 = new AttachedPost1('Charles Bukowski', 'Women', '29.11.1978');
+        myNewAttachment1.edit('Ham on Rye');
+        myNewAttachment1.makeTextHighlithed();
+
+    </script>
+</body>
+</html>
