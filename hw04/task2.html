@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Product(name, price){ 
+            this.name = name;
+            this.price = price;
+        }
+
+        Product.prototype.make25PercentDiscount  = function () {
+            this.price *= 0.75;
+        };
+
+        laptop = new Product('System76 Lemur Pro', 1000);
+        laptop.make25PercentDiscount();
+        console.log(laptop.price);
+
+        // Реализация ES6 
+
+        class Product1 {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            make25PercentDiscount = function () {
+                this.price *= 0.75;
+            }
+        }
+
+        let phone = new Product1('Pine Phone', 200);
+        phone.make25PercentDiscount();
+        console.log(phone.price);
+
+    </script>
+</body>
+</html>

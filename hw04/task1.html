@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    "use strict";
+    function getNumDecompose(value) {
+        if (Number.isInteger(value) === false || value < 0 || value > 999) {
+            console.log(`Функция принимает на вход число от 0 до 999, вы ввели - ${value}.`);
+            return;
+        }
+        
+         let objByValue = {
+            units:  0,
+            tens: 0,
+            hundreds: 0, 
+
+        };
+        
+        for (let i = 0; i <= 2; i++) {
+            if (value < 0) {
+                break;
+            }
+            const mod = value % 10;
+            const key = Object.keys(objByValue)[i];
+            objByValue[key] = mod;
+            value = parseInt((value / 10), 10);
+        }
+
+        return objByValue;
+    }
+
+    console.log(getNumDecompose('HELLO'));
+</script>
+</body>
+</html>
